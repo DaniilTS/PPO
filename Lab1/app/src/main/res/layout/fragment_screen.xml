@@ -2,12 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="429dp"
+    android:layout_width="match_parent"
     android:layout_height="325dp"
     tools:context=".ScreenFragment">
 
     <Spinner
-        android:id="@+id/spinner1"
+        android:id="@+id/downSpinner"
         android:layout_width="95dp"
         android:layout_height="0dp"
         android:layout_marginEnd="20dp"
@@ -17,7 +17,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/editText"
-        app:layout_constraintTop_toBottomOf="@+id/spinner2" />
+        app:layout_constraintTop_toBottomOf="@+id/upperSpinner" />
 
     <EditText
         android:id="@+id/editText"
@@ -32,7 +32,7 @@
         android:focusable="false"
         android:longClickable="false"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/spinner1"
+        app:layout_constraintEnd_toStartOf="@+id/downSpinner"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText2">
 
@@ -51,14 +51,14 @@
         android:focusable="false"
         android:longClickable="false"
         app:layout_constraintBottom_toTopOf="@+id/editText"
-        app:layout_constraintEnd_toStartOf="@+id/spinner2"
+        app:layout_constraintEnd_toStartOf="@+id/upperSpinner"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner">
+        app:layout_constraintTop_toBottomOf="@+id/spinnerMeasure">
 
     </EditText>
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/spinnerMeasure"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="17dp"
@@ -74,7 +74,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
-        android:id="@+id/spinner2"
+        android:id="@+id/upperSpinner"
         android:layout_width="95dp"
         android:layout_height="0dp"
         android:layout_marginTop="192dp"
@@ -82,7 +82,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginBottom="19dp"
         android:entries="@array/currencyOptions"
-        app:layout_constraintBottom_toTopOf="@+id/spinner1"
+        app:layout_constraintBottom_toTopOf="@+id/downSpinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/editText2"
         app:layout_constraintTop_toTopOf="parent" />

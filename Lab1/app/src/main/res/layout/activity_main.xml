@@ -10,15 +10,16 @@
     <fragment
         android:id="@+id/keyboard"
         android:name="com.example.lab1.KeyboardFragment"
-        android:layout_width="390dp"
+        android:layout_width="0dp"
         android:layout_height="520dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <fragment
         android:id="@+id/screen"
         android:name="com.example.lab1.ScreenFragment"
-        android:layout_width="409dp"
+        android:layout_width="0dp"
         android:layout_height="325dp"
         app:layout_constraintBottom_toTopOf="@+id/keyboard"
         app:layout_constraintEnd_toEndOf="parent"

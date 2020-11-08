@@ -8,7 +8,7 @@
 
 
     <Spinner
-        android:id="@+id/spinner3"
+        android:id="@+id/spinnerMeasure"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
@@ -18,26 +18,26 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="150dp"
         android:entries="@array/translationOptions"
-        app:layout_constraintBottom_toTopOf="@+id/spinner4"
+        app:layout_constraintBottom_toTopOf="@+id/upperSpinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
-        android:id="@+id/spinner4"
+        android:id="@+id/upperSpinner"
         android:layout_width="95dp"
         android:layout_height="41dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="45dp"
         android:entries="@array/currencyOptions"
-        app:layout_constraintBottom_toTopOf="@+id/spinner5"
+        app:layout_constraintBottom_toTopOf="@+id/downSpinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/editText3"
-        app:layout_constraintTop_toBottomOf="@+id/spinner3" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerMeasure" />
 
     <Spinner
-        android:id="@+id/spinner5"
+        android:id="@+id/downSpinner"
         android:layout_width="95dp"
         android:layout_height="0dp"
         android:layout_marginEnd="16dp"
@@ -47,7 +47,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/editText4"
-        app:layout_constraintTop_toBottomOf="@+id/spinner4" />
+        app:layout_constraintTop_toBottomOf="@+id/upperSpinner" />
 
     <EditText
         android:id="@+id/editText4"
@@ -57,10 +57,10 @@
         android:layout_marginLeft="18dp"
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/spinner5"
-        app:layout_constraintEnd_toStartOf="@+id/spinner5"
+        app:layout_constraintBottom_toBottomOf="@+id/downSpinner"
+        app:layout_constraintEnd_toStartOf="@+id/downSpinner"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/spinner5"
+        app:layout_constraintTop_toTopOf="@+id/downSpinner"
         android:cursorVisible="false"
         android:focusable="false"
         android:longClickable="false">
@@ -75,10 +75,10 @@
         android:layout_marginLeft="18dp"
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/spinner4"
-        app:layout_constraintEnd_toStartOf="@+id/spinner4"
+        app:layout_constraintBottom_toBottomOf="@+id/upperSpinner"
+        app:layout_constraintEnd_toStartOf="@+id/upperSpinner"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/spinner4"
+        app:layout_constraintTop_toTopOf="@+id/upperSpinner"
         android:cursorVisible="false"
         android:focusable="false"
         android:longClickable="false">

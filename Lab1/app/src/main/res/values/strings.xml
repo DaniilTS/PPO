@@ -36,7 +36,13 @@
     <string-array name="distanceOptions">
         <item>M</item>
         <item>KM</item>
-        <item>C</item>
+        <item>Cм</item>
+    </string-array>
+
+    <string-array name="weightOptions">
+        <item>Pound</item>
+        <item>кг</item>
+        <item>Pud</item>
     </string-array>
 
     <string-array name="translationOptions">
