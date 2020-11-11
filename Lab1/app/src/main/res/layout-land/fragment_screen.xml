@@ -25,7 +25,7 @@
 
     <Spinner
         android:id="@+id/upperSpinner"
-        android:layout_width="95dp"
+        android:layout_width="120dp"
         android:layout_height="41dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
@@ -38,7 +38,7 @@
 
     <Spinner
         android:id="@+id/downSpinner"
-        android:layout_width="95dp"
+        android:layout_width="120dp"
         android:layout_height="0dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
@@ -75,13 +75,13 @@
         android:layout_marginLeft="18dp"
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
+        android:cursorVisible="false"
+        android:focusable="false"
+        android:longClickable="false"
         app:layout_constraintBottom_toBottomOf="@+id/upperSpinner"
         app:layout_constraintEnd_toStartOf="@+id/upperSpinner"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/upperSpinner"
-        android:cursorVisible="false"
-        android:focusable="false"
-        android:longClickable="false">
+        app:layout_constraintTop_toTopOf="@+id/upperSpinner">
 
     </EditText>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import java.lang.reflect.Array;
+import java.text.DecimalFormat;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ScreenFragment extends Fragment{
@@ -48,8 +49,10 @@ public class ScreenFragment extends Fragment{
             model.getUnit().observe(getViewLifecycleOwner(), getVal->{
                 model.getConverterCoefficient().observe(getViewLifecycleOwner(), converterCoefficient->{
                     if(!upperTextField.getText().toString().equals("")){
-                        String convertedVal = Double.toString(Double.parseDouble(getVal.trim())*converterCoefficient);
-                        downTextField.setText(convertedVal);
+                        Double convertedVal = Double.parseDouble(upperTextField.getText().toString().trim()) * converterCoefficient;
+                        downTextField.setText(new DecimalFormat("#.###")
+                                .format(convertedVal)
+                                .replace(',','.'));
                     }
                     else{
                         model.setUnitValue("0");
@@ -80,7 +83,6 @@ public class ScreenFragment extends Fragment{
             upperSpinner.setAdapter(adapter);
             downSpinner.setAdapter(adapter);
 
-
             model.getCurrentFirstUnit().observe(getViewLifecycleOwner(), upperSpinner::setSelection);
             model.getCurrentSecondUnit().observe(getViewLifecycleOwner(), downSpinner::setSelection);
         });
@@ -89,7 +91,7 @@ public class ScreenFragment extends Fragment{
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 model.setCurrentFirstUnit(position);
-                //model.recountCoefficient(upperSpinner.getSelectedItem().toString(), downSpinner.getSelectedItem().toString());
+                model.recountCoefficient(upperSpinner.getSelectedItem().toString(), downSpinner.getSelectedItem().toString());
             }
             @Override
             public void onNothingSelected(AdapterView<?> arg0) {}
@@ -99,7 +101,7 @@ public class ScreenFragment extends Fragment{
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 model.setCurrentSecondUnit(position);
-
+                model.recountCoefficient(upperSpinner.getSelectedItem().toString(), downSpinner.getSelectedItem().toString());
             }
             @Override
             public void onNothingSelected(AdapterView<?> arg0) {}

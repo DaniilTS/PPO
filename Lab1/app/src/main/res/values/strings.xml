@@ -23,13 +23,13 @@
     <string-array name="distanceOptions">
         <item>M</item>
         <item>KM</item>
-        <item>Cм</item>
+        <item>CM</item>
     </string-array>
 
     <string-array name="weightOptions">
-        <item>Funt</item>
-        <item>кг</item>
-        <item>Pud</item>
+        <item>FUNT</item>
+        <item>KG</item>
+        <item>OUNCE</item>
     </string-array>
 
     <string-array name="translationOptions">
