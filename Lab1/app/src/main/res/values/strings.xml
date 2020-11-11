@@ -11,21 +11,8 @@
     <string name="_7">7</string>
     <string name="_4">4</string>
     <string name="_6">6</string>
-    <string name="coma">,</string>
+    <string name="coma">.</string>
     <string name="backspace"><![CDATA[<=]]></string>
-
-    <!--CURRENCY_COEFFICIENTS-->
-    <string name="USDUSD">1</string>
-    <string name="USDEUR">0.84</string>
-    <string name="USDBLR">2.59</string>
-
-    <string name="EUREUR">1</string>
-    <string name="EURUSD">1.17</string>
-    <string name="EURBLR">3.02</string>
-
-    <string name="BLRBLR">1</string>
-    <string name="BLRUSD">0.39</string>
-    <string name="BLREUR">0.33</string>
 
     <string-array name="currencyOptions">
         <item>USD</item>
@@ -40,7 +27,7 @@
     </string-array>
 
     <string-array name="weightOptions">
-        <item>Pound</item>
+        <item>Funt</item>
         <item>кг</item>
         <item>Pud</item>
     </string-array>

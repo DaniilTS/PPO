@@ -33,7 +33,7 @@
         android:entries="@array/currencyOptions"
         app:layout_constraintBottom_toTopOf="@+id/downSpinner"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editText3"
+        app:layout_constraintStart_toEndOf="@+id/textField1"
         app:layout_constraintTop_toBottomOf="@+id/spinnerMeasure" />
 
     <Spinner
@@ -46,11 +46,11 @@
         android:entries="@array/currencyOptions"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editText4"
+        app:layout_constraintStart_toEndOf="@+id/textField2"
         app:layout_constraintTop_toBottomOf="@+id/upperSpinner" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/textField2"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="18dp"
@@ -68,7 +68,7 @@
     </EditText>
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/textField1"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="18dp"

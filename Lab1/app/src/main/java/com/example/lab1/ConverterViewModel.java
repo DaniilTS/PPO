@@ -5,16 +5,15 @@ import androidx.lifecycle.ViewModel;
 
 public class ConverterViewModel extends ViewModel {
 
-    private MutableLiveData<Integer> currentCategory = new MutableLiveData<Integer>(0);
-    private MutableLiveData<Integer> previousCategory = new MutableLiveData<Integer>(0);
-    private MutableLiveData<Boolean> changed = new MutableLiveData<Boolean>(false);
-    private MutableLiveData<Integer> currentFirstUnit = new MutableLiveData<Integer>(0);
-    private MutableLiveData<Integer> currentSecondUnit = new MutableLiveData<Integer>(0);
+    private final MutableLiveData<Integer> currentCategory = new MutableLiveData<Integer>(0);
+    private final MutableLiveData<Integer> previousCategory = new MutableLiveData<Integer>(0);
+    private final MutableLiveData<Boolean> changed = new MutableLiveData<Boolean>(true);
+    private final MutableLiveData<Integer> currentFirstUnit = new MutableLiveData<Integer>(0);
+    private final MutableLiveData<Integer> currentSecondUnit = new MutableLiveData<Integer>(0);
+    private final MutableLiveData<String> unit = new MutableLiveData<String>("");
+    private final MutableLiveData<Double> converterCoefficient = new MutableLiveData<Double>(1.0);
 
     public MutableLiveData<Integer> getCurrentCategory() {
-        if (currentCategory == null) {
-            currentCategory = new MutableLiveData<Integer>();
-        }
         return currentCategory;
     }
 
@@ -23,9 +22,6 @@ public class ConverterViewModel extends ViewModel {
     }
 
     public MutableLiveData<Integer> getCurrentFirstUnit() {
-        if (currentFirstUnit == null) {
-            currentFirstUnit = new MutableLiveData<Integer>();
-        }
         return currentFirstUnit;
     }
 
@@ -34,9 +30,6 @@ public class ConverterViewModel extends ViewModel {
     }
 
     public MutableLiveData<Integer> getCurrentSecondUnit() {
-        if (currentSecondUnit == null) {
-            currentSecondUnit = new MutableLiveData<Integer>();
-        }
         return currentSecondUnit;
     }
 
@@ -45,9 +38,6 @@ public class ConverterViewModel extends ViewModel {
     }
 
     public MutableLiveData<Integer> getPreviousCategory() {
-        if (currentSecondUnit == null) {
-            currentSecondUnit = new MutableLiveData<Integer>();
-        }
         return previousCategory;
     }
 
@@ -61,5 +51,57 @@ public class ConverterViewModel extends ViewModel {
 
     public void setChanged(boolean isChanged) {
         this.changed.setValue(isChanged);
+    }
+
+    public MutableLiveData<Double> getConverterCoefficient() {
+        return converterCoefficient;
+    }
+
+    public void setConverterCoefficient(double coefficient) {
+        this.converterCoefficient.setValue(coefficient);
+    }
+
+    public MutableLiveData<String> getUnit() {
+        return unit;
+    }
+
+    public void setUnitValue(String unitValue) {
+        this.unit.setValue(unitValue);
+    }
+
+    public void addNumber(String number){
+        if(unit.getValue().equals("0")){
+            unit.setValue(number);
+        }
+        unit.setValue(unit.getValue()+number);
+    }
+
+    public void setComa(){
+        if(!unit.getValue().contains(".")){
+            unit.setValue(unit.getValue()+".");
+        }
+    }
+
+    public void backspace(){
+        if(!unit.getValue().equals("0")&& unit.getValue().length()==1){
+            unit.setValue("0");
+        }
+        if(!unit.getValue().equals("")&&!unit.getValue().equals("0")){
+            unit.setValue(unit.getValue().substring(0,unit.getValue().length() - 1));
+        }
+    }
+
+    public void recountCoefficient(String firstUnit, String secondUnit){
+        String value = firstUnit.concat(secondUnit);
+        switch (value){
+            case "USDEUR": setConverterCoefficient(0.84);break;
+            case "USDBLR": setConverterCoefficient(2.59);break;
+            case "EURUSD": setConverterCoefficient(1.17);break;
+            case "EURBLR": setConverterCoefficient(3.02);break;
+            case "BLRUSD": setConverterCoefficient(0.39);break;
+            case "BLREUR": setConverterCoefficient(0.33);break;
+            default: setConverterCoefficient(1.0);
+                break;
+        }
     }
 }
