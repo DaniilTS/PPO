@@ -1,7 +1,15 @@
 package com.example.lab1;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.widget.EditText;
+
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+
+import static androidx.core.content.ContextCompat.getSystemService;
+import static java.security.AccessController.getContext;
 
 public class ConverterViewModel extends ViewModel {
 
@@ -10,15 +18,16 @@ public class ConverterViewModel extends ViewModel {
     private final MutableLiveData<Boolean> changed = new MutableLiveData<Boolean>(true);
     private final MutableLiveData<Integer> currentFirstUnit = new MutableLiveData<Integer>(0);
     private final MutableLiveData<Integer> currentSecondUnit = new MutableLiveData<Integer>(0);
-    private final MutableLiveData<String> unit = new MutableLiveData<String>("0");
+    private final MutableLiveData<String> firstUnitValue = new MutableLiveData<String>("0");
     private final MutableLiveData<Double> converterCoefficient = new MutableLiveData<Double>(1.0);
 
     public MutableLiveData<Integer> getCurrentCategory() {
         return currentCategory;
     }
 
-    public void setCurrentCategory(int categoryId) {
+    public void setCurrentCategory(int categoryId, boolean bool) {
         this.currentCategory.setValue(categoryId);
+        setChanged(bool);
     }
 
     public MutableLiveData<Integer> getCurrentFirstUnit() {
@@ -61,36 +70,53 @@ public class ConverterViewModel extends ViewModel {
         this.converterCoefficient.setValue(coefficient);
     }
 
-    public MutableLiveData<String> getUnit() {
-        return unit;
+    public MutableLiveData<String> getFirstUnitValue() {
+        return firstUnitValue;
     }
 
     public void setUnitValue(String unitValue) {
-        this.unit.setValue(unitValue);
+        this.firstUnitValue.setValue(unitValue);
     }
 
     public void addNumber(String number){
-        if(unit.getValue().equals("0")){
-            unit.setValue(number);
+        if(firstUnitValue.getValue().equals("0")){
+            firstUnitValue.setValue(number);
         }
         else{
-            unit.setValue(unit.getValue()+number);
+            firstUnitValue.setValue(firstUnitValue.getValue()+number);
         }
     }
 
     public void setComa(){
-        if(!unit.getValue().contains(".")){
-            unit.setValue(unit.getValue()+".");
+        if(!firstUnitValue.getValue().contains(".")){
+            firstUnitValue.setValue(firstUnitValue.getValue()+".");
         }
     }
 
     public void backspace(){
-        if(!unit.getValue().equals("0")&& unit.getValue().length()==1){
-            unit.setValue("0");
+        if(!firstUnitValue.getValue().equals("0")&& firstUnitValue.getValue().length()==1) {
+            firstUnitValue.setValue("0");
         }
-        if(!unit.getValue().equals("")&&!unit.getValue().equals("0")){
-            unit.setValue(unit.getValue().substring(0,unit.getValue().length() - 1));
+        if(!firstUnitValue.getValue().equals("")&&!firstUnitValue.getValue().equals("0")){
+            firstUnitValue.setValue(firstUnitValue.getValue().substring(0, firstUnitValue.getValue().length() - 1));
         }
+    }
+
+    public void swapUnits(){
+        Integer firstUnit = currentFirstUnit.getValue();
+        currentFirstUnit.setValue(currentSecondUnit.getValue());
+        currentSecondUnit.setValue(firstUnit);
+    }
+
+    public void swapValues(){
+        double secondUnitValue = Double.parseDouble(firstUnitValue.getValue())*converterCoefficient.getValue();
+        firstUnitValue.setValue(Double.toString(secondUnitValue));
+    }
+
+    public void saveValue(Context context, String text){
+        ClipboardManager clipboard = getSystemService(context, ClipboardManager.class);
+        ClipData clip = ClipData.newPlainText("label", text);
+        clipboard.setPrimaryClip(clip);
     }
 
     public void recountCoefficient(String firstUnit, String secondUnit){

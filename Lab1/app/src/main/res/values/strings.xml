@@ -12,7 +12,7 @@
     <string name="_4">4</string>
     <string name="_6">6</string>
     <string name="coma">.</string>
-    <string name="backspace"><![CDATA[<=]]></string>
+    <string name="backspace"><![CDATA[\u232b]]></string>
 
     <string-array name="currencyOptions">
         <item>USD</item>

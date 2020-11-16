@@ -50,6 +50,26 @@
         app:layout_constraintTop_toBottomOf="@+id/upperSpinner" />
 
     <EditText
+        android:inputType="text"
+        android:id="@+id/textField1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:cursorVisible="false"
+        android:focusable="false"
+        android:longClickable="false"
+        app:layout_constraintBottom_toBottomOf="@+id/upperSpinner"
+        app:layout_constraintEnd_toStartOf="@+id/upperSpinner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/upperSpinner">
+
+    </EditText>
+
+    <EditText
+        android:inputType="text"
         android:id="@+id/textField2"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -67,21 +87,4 @@
 
     </EditText>
 
-    <EditText
-        android:id="@+id/textField1"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="18dp"
-        android:layout_marginLeft="18dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
-        android:cursorVisible="false"
-        android:focusable="false"
-        android:longClickable="false"
-        app:layout_constraintBottom_toBottomOf="@+id/upperSpinner"
-        app:layout_constraintEnd_toStartOf="@+id/upperSpinner"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/upperSpinner">
-
-    </EditText>
 </androidx.constraintlayout.widget.ConstraintLayout>

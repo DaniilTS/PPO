@@ -3,6 +3,7 @@ package com.example.lab1;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.view.LayoutInflater;
@@ -10,15 +11,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import java.util.Objects;
+
 
 public class KeyboardFragment extends Fragment {
-    ConverterViewModel model;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_keyboard, container, false);
-        ConverterViewModel model = ViewModelProviders.of(getActivity()).get(ConverterViewModel.class);
+        ConverterViewModel model = new ViewModelProvider(Objects.requireNonNull(getActivity())).get(ConverterViewModel.class);
 
         view.findViewById(R.id.btn0).setOnClickListener(i -> model.addNumber("0"));
         view.findViewById(R.id.btn1).setOnClickListener(i -> model.addNumber("1"));
@@ -32,6 +33,10 @@ public class KeyboardFragment extends Fragment {
         view.findViewById(R.id.btn9).setOnClickListener(i -> model.addNumber("9"));
 
         view.findViewById(R.id.btn_coma).setOnClickListener(i -> model.setComa());
+        view.findViewById(R.id.btn_coma).setOnLongClickListener(v -> {
+            model.setComa();
+            return false;
+        });
         view.findViewById(R.id.btn_backspace).setOnClickListener(i->model.backspace());
         return view;
     }

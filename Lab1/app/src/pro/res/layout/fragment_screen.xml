@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="325dp"
+    tools:context=".ScreenFragment">
+
+    <Spinner
+        android:id="@+id/downSpinner"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="16dp"
+        android:entries="@array/currencyOptions"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textField2" />
+
+    <Spinner
+        android:id="@+id/spinnerMeasure"
+        android:layout_width="375dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="96dp"
+        android:entries="@array/translationOptions"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/upperSpinner"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:entries="@array/currencyOptions"
+        app:layout_constraintStart_toEndOf="@+id/textField1"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerMeasure" />
+
+    <EditText
+        android:id="@+id/textField1"
+        android:layout_width="190dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:cursorVisible="false"
+        android:focusable="false"
+        android:inputType="text"
+        android:longClickable="false"
+        app:layout_constraintStart_toEndOf="@+id/save1ValueBtn"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerMeasure">
+
+    </EditText>
+
+    <EditText
+        android:id="@+id/textField2"
+        android:layout_width="190dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="16dp"
+        android:cursorVisible="false"
+        android:focusable="false"
+        android:inputType="text"
+        android:longClickable="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/save2ValueBtn" />
+
+    <ImageButton
+        android:id="@+id/swapValue"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:layout_marginLeft="72dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:src="@android:drawable/stat_notify_sync"
+        app:layout_constraintBottom_toTopOf="@+id/textField2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textField1"
+        app:layout_constraintVertical_bias="0.666" />
+
+    <ImageButton
+        android:id="@+id/swapUnit"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:src="@android:drawable/stat_notify_sync"
+        app:layout_constraintBottom_toTopOf="@+id/downSpinner"
+        app:layout_constraintStart_toEndOf="@+id/swapValue"
+        app:layout_constraintTop_toBottomOf="@+id/upperSpinner" />
+
+    <ImageButton
+        android:id="@+id/save1ValueBtn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="5dp"
+        android:src="@android:drawable/ic_menu_save"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerMeasure" />
+
+    <ImageButton
+        android:id="@+id/save2ValueBtn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginBottom="16dp"
+        android:src="@android:drawable/ic_menu_save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
