@@ -33,10 +33,6 @@ public class KeyboardFragment extends Fragment {
         view.findViewById(R.id.btn9).setOnClickListener(i -> model.addNumber("9"));
 
         view.findViewById(R.id.btn_coma).setOnClickListener(i -> model.setComa());
-        view.findViewById(R.id.btn_coma).setOnLongClickListener(v -> {
-            model.setComa();
-            return false;
-        });
         view.findViewById(R.id.btn_backspace).setOnClickListener(i->model.backspace());
         return view;
     }
