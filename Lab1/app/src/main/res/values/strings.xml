@@ -1,0 +1,41 @@
+<resources>
+    <string name="button">Button</string>
+    <string name="_5">5</string>
+    <string name="_0">0</string>
+    <string name="_9">9</string>
+    <string name="_1">1</string>
+    <string name="_2">2</string>
+    <string name="_3">3</string>
+    <string name="_8">8</string>
+    <string name="_7">7</string>
+    <string name="_4">4</string>
+    <string name="_6">6</string>
+    <string name="coma">.</string>
+    <string name="backspace"><![CDATA[\u232b]]></string>
+
+    <string-array name="currencyOptions">
+        <item>USD</item>
+        <item>EUR</item>
+        <item>BLR</item>
+    </string-array>
+
+    <string-array name="distanceOptions">
+        <item>M</item>
+        <item>KM</item>
+        <item>CM</item>
+    </string-array>
+
+    <string-array name="weightOptions">
+        <item>FUNT</item>
+        <item>KG</item>
+        <item>OUNCE</item>
+    </string-array>
+
+    <string-array name="translationOptions">
+        <item>currency</item>
+        <item>distance</item>
+        <item>weight</item>
+    </string-array>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

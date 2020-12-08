@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="400dp"
+    android:layout_height="412dp"
+    tools:context=".ScreenFragment">
+
+
+    <Spinner
+        android:id="@+id/spinnerMeasure"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="69dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="150dp"
+        android:entries="@array/translationOptions"
+        app:layout_constraintBottom_toTopOf="@+id/upperSpinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/upperSpinner"
+        android:layout_width="120dp"
+        android:layout_height="41dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="45dp"
+        android:entries="@array/currencyOptions"
+        app:layout_constraintBottom_toTopOf="@+id/downSpinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textField1"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerMeasure" />
+
+    <Spinner
+        android:id="@+id/downSpinner"
+        android:layout_width="120dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:entries="@array/currencyOptions"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textField2"
+        app:layout_constraintTop_toBottomOf="@+id/upperSpinner" />
+
+    <EditText
+        android:inputType="text"
+        android:id="@+id/textField1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:cursorVisible="false"
+        android:focusable="false"
+        android:longClickable="false"
+        app:layout_constraintBottom_toBottomOf="@+id/upperSpinner"
+        app:layout_constraintEnd_toStartOf="@+id/upperSpinner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/upperSpinner">
+
+    </EditText>
+
+    <EditText
+        android:inputType="text"
+        android:id="@+id/textField2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/downSpinner"
+        app:layout_constraintEnd_toStartOf="@+id/downSpinner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/downSpinner"
+        android:cursorVisible="false"
+        android:focusable="false"
+        android:longClickable="false">
+
+    </EditText>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
