@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/screen"
-        android:name="com.examplePro.Lab1.ScreenFragment"
+        android:name="com.examplePro.Lab1.ScreenFragmentPro"
         android:layout_width="400dp"
         android:layout_height="412dp"
         app:layout_constraintBottom_toBottomOf="parent"

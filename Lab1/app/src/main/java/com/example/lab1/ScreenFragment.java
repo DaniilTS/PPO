@@ -18,42 +18,68 @@ import java.util.Objects;
 
 public class ScreenFragment extends Fragment{
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_screen, container, false);
+    public void ChangeMeasureValue(Spinner measureSpinner, ConverterViewModel model){
+        measureSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                model.setCurrentCategory(position, false);
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {}
+        });
+    }
 
-        Spinner measureSpinner = view.findViewById(R.id.spinnerMeasure);
-        Spinner upperSpinner = view.findViewById(R.id.upperSpinner);
-        Spinner downSpinner = view.findViewById(R.id.downSpinner);
-        EditText upperTextField = view.findViewById(R.id.textField1);
-        EditText downTextField = view.findViewById(R.id.textField2);
+    public void ChangeUpperSpinnerValue(Spinner upperSpinner, Spinner downSpinner, ConverterViewModel model){
+        upperSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                model.setCurrentFirstUnit(position);
+                model.recountCoefficient(upperSpinner.getSelectedItem().toString(), downSpinner.getSelectedItem().toString());
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {}
+        });
+    }
 
-        ConverterViewModel model = new ViewModelProvider(Objects.requireNonNull(getActivity())).get(ConverterViewModel.class);
+    public void ChangeDownSpinnerValue(Spinner upperSpinner, Spinner downSpinner, ConverterViewModel model){
+        downSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                model.setCurrentSecondUnit(position);
+                model.recountCoefficient(upperSpinner.getSelectedItem().toString(), downSpinner.getSelectedItem().toString());
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
+    }
 
+    public void UpdateTextFields(EditText upperTextField, EditText downTextField, ConverterViewModel model){
         model.getFirstUnitValue().observe(getViewLifecycleOwner(), getVal-> model.getConverterCoefficient()
                 .observe(getViewLifecycleOwner(), converterCoefficient->{
 
-            upperTextField.setText(getVal);
-            if(!upperTextField.getText().toString().equals("")){
-                Double convertedVal = Double.parseDouble(upperTextField.getText().toString().trim()) * converterCoefficient;
-                downTextField.setText(new DecimalFormat("#.###").format(convertedVal)
-                        .replace(',','.'));
-            }
-            else{
-                model.setUnitValue("0");
-            }
-        }));
+                    upperTextField.setText(getVal);
+                    if(!upperTextField.getText().toString().equals("")){
+                        Double convertedVal = Double.parseDouble(upperTextField.getText().toString().trim()) * converterCoefficient;
+                        downTextField.setText(new DecimalFormat("#.###").format(convertedVal)
+                                .replace(',','.'));
+                    }
+                    else{
+                        model.setUnitValue("0");
+                    }
+                }));
+    }
 
+    public void UpdateSpinners(Spinner upperSpinner, Spinner downSpinner, ConverterViewModel model){
         model.getCurrentCategory().observe(getViewLifecycleOwner(), val->{
             model.getPreviousCategory().observe(getViewLifecycleOwner(), prevVal-> model.getChanged()
                     .observe(getViewLifecycleOwner(), isChanged->{
-                if(!prevVal.equals(val) && isChanged.equals(false)){
-                    model.setPreviousCategory(val);
-                    model.setCurrentFirstUnit(0);
-                    model.setCurrentSecondUnit(0);
-                    model.setChanged(true);
-                }
-            }));
+                        if(!prevVal.equals(val) && isChanged.equals(false)){
+                            model.setPreviousCategory(val);
+                            model.setCurrentFirstUnit(0);
+                            model.setCurrentSecondUnit(0);
+                            model.setChanged(true);
+                        }
+                    }));
 
             ArrayAdapter<?> adapter = null;
             switch (val){
@@ -69,35 +95,25 @@ public class ScreenFragment extends Fragment{
             model.getCurrentFirstUnit().observe(getViewLifecycleOwner(), upperSpinner::setSelection);
             model.getCurrentSecondUnit().observe(getViewLifecycleOwner(), downSpinner::setSelection);
         });
+    }
 
-        measureSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                model.setCurrentCategory(position, false);
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> arg0) {}
-        });
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_screen, container, false);
 
-        upperSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                model.setCurrentFirstUnit(position);
-                model.recountCoefficient(upperSpinner.getSelectedItem().toString(), downSpinner.getSelectedItem().toString());
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> arg0) {}
-        });
+        Spinner measureSpinner = view.findViewById(R.id.spinnerMeasure);
+        Spinner upperSpinner = view.findViewById(R.id.upperSpinner);
+        Spinner downSpinner = view.findViewById(R.id.downSpinner);
+        EditText upperTextField = view.findViewById(R.id.textField1);
+        EditText downTextField = view.findViewById(R.id.textField2);
 
-        downSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                model.setCurrentSecondUnit(position);
-                model.recountCoefficient(upperSpinner.getSelectedItem().toString(), downSpinner.getSelectedItem().toString());
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {}
-        });
+        ConverterViewModel model = new ViewModelProvider(Objects.requireNonNull(getActivity())).get(ConverterViewModel.class);
+
+        UpdateTextFields(upperTextField, downTextField, model);
+        UpdateSpinners(upperSpinner, downSpinner, model);
+        ChangeMeasureValue(measureSpinner, model);
+        ChangeUpperSpinnerValue(upperSpinner, downSpinner, model);
+        ChangeDownSpinnerValue(upperSpinner, downSpinner, model);
 
         return view;
     }

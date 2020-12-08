@@ -4,12 +4,10 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import java.util.Objects;
 
@@ -33,6 +31,10 @@ public class KeyboardFragment extends Fragment {
         view.findViewById(R.id.btn9).setOnClickListener(i -> model.addNumber("9"));
 
         view.findViewById(R.id.btn_coma).setOnClickListener(i -> model.setComa());
+        view.findViewById(R.id.btn_coma).setOnLongClickListener(v -> {
+            model.setComa();
+            return false;
+        });
         view.findViewById(R.id.btn_backspace).setOnClickListener(i->model.backspace());
         return view;
     }
